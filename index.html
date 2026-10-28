@@ -68,15 +68,22 @@ section.grp{margin-top:44px}
 #toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--card);padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60}
 #toast.on{opacity:1}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+nav{display:block!important;padding:8px 14px!important}
+nav .row1,nav .row2{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav .row2{margin-top:8px}nav .row2:empty{display:none}
+nav .row2 a{font-size:13px;padding:4px 10px;background:var(--ph);border-color:transparent;color:var(--mute)}
+nav .row2 a.on{background:transparent;color:var(--court);border-color:var(--court)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
+.svc>h2.subh{font-size:21px;border-left-color:var(--ball)}
 </style>
 </head>
 <body>
-<nav id="nav">
+<nav id="nav"><div class="row1">
 <a href="#nhan-ca">Nhận ca</a>
 <a href="#lam-viec">Quá trình làm</a>
 <a href="#dich-vu">Dịch vụ</a>
 <a href="#ket-ca">Kết ca</a>
-</nav>
+</div><div class="row2" id="subnav"></div></nav>
 <header>
 <h1>ACTN · Hướng dẫn Admin theo ca</h1>
 <p>Bấm menu để nhảy tới bước cần làm. Bấm “Copy” để lấy tin nhắn mẫu, chọn EN hoặc VI trước.</p>
@@ -90,7 +97,7 @@ section.grp{margin-top:44px}
 <li>Check lại các tin nhắn trên các nền tảng để không bỏ sót. <span class="must">Ưu tiên trả lời khách trước, không để khách chờ.</span></li>
 </ol></div>
 <figure class="img" data-img="1-1" data-cap="Home: nút Nhận ca và danh sách việc trong ca"></figure>
-<h3>Các nơi cần check tin nhắn</h3>
+<h3 id="check-tn">Các nơi cần check tin nhắn</h3>
 <div class="card"><ol>
 <li><b>Nên check trực tiếp từ các app:</b> Zalo OA, WhatsApp, Booking trên Wix, Instagram, Facebook.</li>
 <li><b>Có thể check ở tab “Tin nhắn chờ”</b> trong app Booking (Zalo OA, WhatsApp, Wix). Instagram và Facebook không có trong tab này, phải mở thẳng từng app.</li>
@@ -102,7 +109,6 @@ section.grp{margin-top:44px}
 
 <section class="grp" id="lam-viec">
 <h2>2. Quá trình làm</h2>
-<div class="chips"><a href="#luong">Luồng tư vấn</a><a href="#khach-moi">Khách mới</a><a href="#check-lich">Check lịch</a><a href="#dv-khac">Dịch vụ khác</a><a href="#confirm">Confirm booking</a><a href="#booking">Cách book lesson</a><a href="#gui-bill">Gửi bill</a><a href="#tick-task">Bấm Xong</a></div>
 <div class="sub" id="luong">
 <div class="card"><b>Luồng tư vấn nhanh</b><ol>
 <li>Khách mới → gửi <a href="#khach-moi">lời chào</a>.</li>
@@ -133,6 +139,65 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="tpl" data-t="lesson"></div>
 <div class="card">Khách chọn <b>Hitting Partner</b> hoặc <b>Thuê sân</b> → xem mục <a href="#dich-vu">Dịch vụ</a>.</div>
 </div>
+<div class="sub svc" id="dich-vu">
+<h2 class="subh">Thông tin dịch vụ</h2>
+<div class="sub" id="private">
+<h2 class="subh">Private Lesson</h2>
+<div class="card"><b>3 cấp coach:</b> Junior · Senior · Head<br><span style="color:var(--mute)">Head coach không dạy ở sân khác.</span></div>
+<figure class="img" data-img="p-1" data-cap="Bảng giá + thông tin 3 level coach (tại ACTN)"></figure>
+<h3>Private tại sân của khách (giá chưa gồm tiền sân)</h3>
+<div class="card scroll"><table>
+<tr><th>Hình thức</th><th>Junior</th><th>Senior</th></tr>
+<tr><td>1:1</td><td>650.000đ/h</td><td>860.000đ/h</td></tr>
+<tr><td>1:2</td><td>860.000đ/h</td><td>1.080.000đ/h</td></tr>
+<tr><td>1:3</td><td>960.000đ/h</td><td>1.296.000đ/h</td></tr>
+</table></div>
+<figure class="img" data-img="p-3" data-cap="Bảng giá private tại sân của khách (chưa gồm tiền sân)"></figure>
+<div class="tpl" data-t="privrate"></div>
+<div class="warn">Có thể gửi link booking từ app Booking để tiết kiệm thời gian. Làm sau khi hết thử việc.</div>
+<figure class="img" data-img="p-2" data-cap="Cách tạo và gửi link booking trong app"></figure>
+</div>
+<div class="sub" id="hitting">
+<h2 class="subh">Hitting Partner</h2>
+<div class="card"><b>3 level:</b> Level 1 Beginner–Inter · Level 2 Advanced · Level 3 Professional</div>
+<figure class="img" data-img="h-1" data-cap="Bảng giá + mô tả 3 level Hitting Partner"></figure>
+<div class="warn">Cũng có thể gửi link booking từ app Booking (sau thử việc).</div>
+</div>
+<div class="sub" id="group">
+<h2 class="subh">Group Lesson</h2>
+<h3>Lịch lớp group cho Kid</h3>
+<div class="card">Dưới 10 tuổi (Beginner) · 10–12 tuổi (Beginner–Inter) · trên 12 tuổi (Advanced)</div>
+<figure class="img" data-img="g-1" data-cap="Lịch lớp group cho Kid"></figure>
+<div class="warn"><b>Lưu ý nội bộ:</b> Lớp Kid Advanced (trên 10 tuổi), thứ 7 và CN 10:00–12:00 sáng, không có trong ảnh. Chỉ offer khách có level phù hợp, các trường hợp khác báo lớp full.</div>
+<h3>Lịch lớp group cho người lớn</h3>
+<div class="card">Newbie (dưới 6 tháng) · Beginner (6 tháng – 2 năm) · Intermediate (trên 2 năm) · Match play (cho Intermediate)</div>
+<figure class="img" data-img="g-2" data-cap="Lịch lớp người lớn (tiếng Anh)"></figure>
+<figure class="img" data-img="g-2v" data-cap="Lịch lớp người lớn (tiếng Việt)"></figure>
+<div class="card"><b>Quy tắc:</b><ul>
+<li>Khách book Group → gửi <b>link website</b> để khách tự book (tăng traffic web, giảm tải admin).</li>
+<li>Khách đã book web ít nhất 1 lần → mời tải <b>app Community</b> để book Group và thuê sân.</li></ul></div>
+<div class="tpl" data-t="group"></div>
+<div class="tpl" data-t="app"></div>
+</div>
+<div class="sub" id="thue-san">
+<h2 class="subh">Thuê sân</h2>
+<div class="warn"><b>Điều kiện:</b> khách đã có ít nhất 1 lesson ở ACTN hoặc là member Community Club. Khách quen có thể ngoại lệ.</div>
+<div class="card scroll"><table>
+<tr><th>Sân</th><th>Sáng</th><th>Tối</th><th>Điểm bán</th></tr>
+<tr><td>Outdoor · Thảo Điền</td><td>290k</td><td>390k</td><td>Ngoài trời, private, nhiều cây xanh, yên tĩnh, bóng mát cả sân sau 1:00 PM</td></tr>
+<tr><td>Indoor · An Phú</td><td>360k</td><td>460k</td><td>4 sân có mái che, tránh nắng và mưa (+70k so với Thảo Điền)</td></tr>
+</table></div>
+<figure class="img" data-img="s-1" data-cap="Bảng giá thuê sân và dịch vụ"></figure>
+<div class="tpl" data-t="court"></div>
+</div>
+<div class="sub" id="dv-khac">
+<h2 class="subh">Tư vấn dịch vụ đi kèm (trước khi chốt deal)</h2>
+<div class="card">Tư vấn trước khi chốt deal.<ul>
+<li>Racket rental: <b>100.000vnd/h/racket</b></li>
+<li>Ball boy: <b>100.000vnd/h</b></li></ul></div>
+<div class="tpl" data-t="extra"></div>
+</div>
+</div>
 <div class="sub" id="check-lich">
 <h2 class="subh">Check lịch và gửi lịch cho khách</h2>
 <div class="card"><b>Làm sau khi gửi thông tin dịch vụ</b><ol>
@@ -154,13 +219,6 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <li><b>Hạn chế</b> xếp các lesson <b>giờ liền kề nhưng khác địa điểm</b>.</li>
 </ul></div>
 <div class="warn"><b>Lịch head coach (Coach Đăng, Coach Hoàng):</b> phải check tay và hỏi ý kiến coach trước khi chốt với khách.</div>
-</div>
-<div class="sub" id="dv-khac">
-<h2 class="subh">Tư vấn dịch vụ khác (trước khi chốt deal)</h2>
-<div class="card">Tư vấn trước khi chốt deal.<ul>
-<li>Racket rental: <b>100.000vnd/h/racket</b></li>
-<li>Ball boy: <b>100.000vnd/h</b></li></ul></div>
-<div class="tpl" data-t="extra"></div>
 </div>
 <div class="sub" id="confirm">
 <h2 class="subh">Confirm booking với khách</h2>
@@ -280,62 +338,8 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 </div>
 </section>
 
-<section class="grp" id="dich-vu">
-<h2>3. Thông tin dịch vụ</h2>
-<div class="chips"><a href="#private">Private</a><a href="#hitting">Hitting Partner</a><a href="#group">Group</a><a href="#thue-san">Thuê sân</a></div>
-<div class="sub" id="private">
-<h2 class="subh">Private Lesson</h2>
-<div class="card"><b>3 cấp coach:</b> Junior · Senior · Head<br><span style="color:var(--mute)">Head coach không dạy ở sân khác.</span></div>
-<figure class="img" data-img="p-1" data-cap="Bảng giá + thông tin 3 level coach (tại ACTN)"></figure>
-<h3>Private tại sân của khách (giá chưa gồm tiền sân)</h3>
-<div class="card scroll"><table>
-<tr><th>Hình thức</th><th>Junior</th><th>Senior</th></tr>
-<tr><td>1:1</td><td>650.000đ/h</td><td>860.000đ/h</td></tr>
-<tr><td>1:2</td><td>860.000đ/h</td><td>1.080.000đ/h</td></tr>
-<tr><td>1:3</td><td>960.000đ/h</td><td>1.296.000đ/h</td></tr>
-</table></div>
-<figure class="img" data-img="p-3" data-cap="Bảng giá private tại sân của khách (chưa gồm tiền sân)"></figure>
-<div class="tpl" data-t="privrate"></div>
-<div class="warn">Có thể gửi link booking từ app Booking để tiết kiệm thời gian. Làm sau khi hết thử việc.</div>
-<figure class="img" data-img="p-2" data-cap="Cách tạo và gửi link booking trong app"></figure>
-</div>
-<div class="sub" id="hitting">
-<h2 class="subh">Hitting Partner</h2>
-<div class="card"><b>3 level:</b> Level 1 Beginner–Inter · Level 2 Advanced · Level 3 Professional</div>
-<figure class="img" data-img="h-1" data-cap="Bảng giá + mô tả 3 level Hitting Partner"></figure>
-<div class="warn">Cũng có thể gửi link booking từ app Booking (sau thử việc).</div>
-</div>
-<div class="sub" id="group">
-<h2 class="subh">Group Lesson</h2>
-<h3>Lịch lớp group cho Kid</h3>
-<div class="card">Dưới 10 tuổi (Beginner) · 10–12 tuổi (Beginner–Inter) · trên 12 tuổi (Advanced)</div>
-<figure class="img" data-img="g-1" data-cap="Lịch lớp group cho Kid"></figure>
-<div class="warn"><b>Lưu ý nội bộ:</b> Lớp Kid Advanced (trên 10 tuổi), thứ 7 và CN 10:00–12:00 sáng, không có trong ảnh. Chỉ offer khách có level phù hợp, các trường hợp khác báo lớp full.</div>
-<h3>Lịch lớp group cho người lớn</h3>
-<div class="card">Newbie (dưới 6 tháng) · Beginner (6 tháng – 2 năm) · Intermediate (trên 2 năm) · Match play (cho Intermediate)</div>
-<figure class="img" data-img="g-2" data-cap="Lịch lớp người lớn (tiếng Anh)"></figure>
-<figure class="img" data-img="g-2v" data-cap="Lịch lớp người lớn (tiếng Việt)"></figure>
-<div class="card"><b>Quy tắc:</b><ul>
-<li>Khách book Group → gửi <b>link website</b> để khách tự book (tăng traffic web, giảm tải admin).</li>
-<li>Khách đã book web ít nhất 1 lần → mời tải <b>app Community</b> để book Group và thuê sân.</li></ul></div>
-<div class="tpl" data-t="group"></div>
-<div class="tpl" data-t="app"></div>
-</div>
-<div class="sub" id="thue-san">
-<h2 class="subh">Thuê sân</h2>
-<div class="warn"><b>Điều kiện:</b> khách đã có ít nhất 1 lesson ở ACTN hoặc là member Community Club. Khách quen có thể ngoại lệ.</div>
-<div class="card scroll"><table>
-<tr><th>Sân</th><th>Sáng</th><th>Tối</th><th>Điểm bán</th></tr>
-<tr><td>Outdoor · Thảo Điền</td><td>290k</td><td>390k</td><td>Ngoài trời, private, nhiều cây xanh, yên tĩnh, bóng mát cả sân sau 1:00 PM</td></tr>
-<tr><td>Indoor · An Phú</td><td>360k</td><td>460k</td><td>4 sân có mái che, tránh nắng và mưa (+70k so với Thảo Điền)</td></tr>
-</table></div>
-<figure class="img" data-img="s-1" data-cap="Bảng giá thuê sân và dịch vụ"></figure>
-<div class="tpl" data-t="court"></div>
-</div>
-</section>
-
 <section class="grp" id="ket-ca">
-<h2>4. Kết ca</h2>
+<h2>3. Kết ca</h2>
 <div class="warn"><b>Bấm Kết ca ở trang Home trước giờ hết ca.</b> Hệ thống tự đóng ca và trừ điểm mọi task chưa bàn giao, bất kể lý do chưa xong.</div>
 <div class="card"><ol>
 <li>Task chưa xong → bàn giao cho ca sau.</li>
@@ -440,9 +444,24 @@ function copyImg(src){
 }
 function openImg(src){const w=window.open("");if(w){w.document.write('<title>Ảnh</title><body style="margin:0;background:#111"><img src="'+src+'" style="max-width:100%;display:block;margin:auto"><p style="color:#ccc;font:14px sans-serif;text-align:center">Nhấn giữ hoặc chuột phải vào ảnh → Copy Image</p>');w.document.close()}}
 $("#lb").onclick=()=>$("#lb").classList.remove("on");
-const links=$$("#nav a");
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle("on",a.hash==="#"+e.target.id))}}),{rootMargin:"-20% 0px -70% 0px"});
-$$("section.grp").forEach(s=>io.observe(s));
+/* MENU CON: sửa danh sách tab con ở đây (id phần → tên hiện) */
+const SUB={
+"nhan-ca":[["nhan-ca","Các bước nhận ca"],["check-tn","Check tin nhắn"]],
+"lam-viec":[["luong","Luồng tư vấn"],["khach-moi","Khách mới"],["check-lich","Check lịch"],["confirm","Confirm booking"],["booking","Book lesson"],["gui-bill","Gửi bill"],["tick-task","Bấm Xong"]],
+"dich-vu":[["private","Private"],["hitting","Hitting Partner"],["group","Group"],["thue-san","Thuê sân"],["dv-khac","DV đi kèm"]],
+"ket-ca":[]};
+const MARK=[["nhan-ca","nhan-ca"],["lam-viec","lam-viec"],["dich-vu","dich-vu"],["check-lich","lam-viec"],["ket-ca","ket-ca"]];
+const top1=$$("#nav .row1 a"), sub=$("#subnav"); let cur="";
+function off(){return $("#nav").getBoundingClientRect().bottom+12}
+function showSub(k){if(k===cur)return;cur=k;top1.forEach(a=>a.classList.toggle("on",a.hash==="#"+k));
+ sub.innerHTML=(SUB[k]||[]).map(([id,t])=>'<a href="#'+id+'">'+t+'</a>').join("")}
+function upd(){const o=off();let k="nhan-ca";
+ for(const [id,key] of MARK){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=o+40)k=key}
+ if(innerHeight+scrollY>=document.body.scrollHeight-4)k="ket-ca";
+ showSub(k);let a="";for(const [id] of (SUB[k]||[])){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=o+40)a=id}
+ $$("a",sub).forEach(x=>{const on=x.hash==="#"+a;x.classList.toggle("on",on);if(on&&x.scrollIntoView&&sub.scrollWidth>sub.clientWidth){sub.scrollLeft=x.offsetLeft-20}})}
+top1.forEach(a=>a.addEventListener("click",()=>showSub(a.hash.slice(1))));
+addEventListener("scroll",upd,{passive:true});upd();
 </script>
 </body>
 </html>
