@@ -305,11 +305,17 @@ $$("figure.img").forEach(f=>{
     bar.innerHTML='<button class="go" data-a="img">Copy ảnh</button><span>rồi</span><button data-l="en" class="on">EN</button><button data-l="vi">VI</button><button class="go" data-a="txt">Copy câu text</button>';
     $$("[data-l]",bar).forEach(b=>b.onclick=()=>{lg=b.dataset.l;$$("[data-l]",bar).forEach(x=>x.classList.toggle("on",x===b))});
     $('[data-a="txt"]',bar).onclick=async()=>{try{await navigator.clipboard.writeText(CAP[id][lg]);toast("Đã copy câu text")}catch(e){toast("Không copy được")}};
-    $('[data-a="img"]',bar).onclick=async()=>{try{await copyImg(src);toast("Đã copy ảnh")}catch(e){toast("Không copy được, chuột phải vào ảnh → Copy Image")}};
+    $('[data-a="img"]',bar).onclick=()=>{copyImg(src).then(()=>toast("Đã copy ảnh")).catch(e=>{toast("Không copy được: ảnh sẽ mở ra, chuột phải → Copy Image");openImg(src)})};
     f.after(bar);
   }
 });
-async function copyImg(src){const im=new Image();im.src=src;await im.decode();const c=document.createElement("canvas");c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext("2d").drawImage(im,0,0);const blob=await new Promise(r=>c.toBlob(r,"image/png"));await navigator.clipboard.write([new ClipboardItem({"image/png":blob})])}
+function pngBlob(src){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext("2d").drawImage(im,0,0);c.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png")};im.onerror=()=>rej(new Error("load"));im.src=src})}
+function copyImg(src){
+  if(!(navigator.clipboard&&window.ClipboardItem))return Promise.reject(new Error("no clipboard"));
+  /* ClipboardItem nhận Promise: gọi write ngay trong lúc bấm để Safari/Chrome đều cho phép */
+  return navigator.clipboard.write([new ClipboardItem({"image/png":pngBlob(src)})]);
+}
+function openImg(src){const w=window.open("");if(w){w.document.write('<title>Ảnh</title><body style="margin:0;background:#111"><img src="'+src+'" style="max-width:100%;display:block;margin:auto"><p style="color:#ccc;font:14px sans-serif;text-align:center">Nhấn giữ hoặc chuột phải vào ảnh → Copy Image</p>');w.document.close()}}
 $("#lb").onclick=()=>$("#lb").classList.remove("on");
 const links=$$("#nav a");
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle("on",a.hash==="#"+e.target.id))}}),{rootMargin:"-20% 0px -70% 0px"});
