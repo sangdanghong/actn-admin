@@ -132,10 +132,13 @@ nav .row1 a{padding:6px 10px;font-size:13.5px}
 <div class="sub" id="luong">
 <div class="card"><b>Luồng tư vấn nhanh</b><ol>
 <li>Khách mới → gửi <a href="#khach-moi">lời chào</a>.</li>
-<li>Hỏi khách cần gì: Lesson / Hitting Partner / Thuê sân.</li>
-<li>Gửi thông tin <a href="#dich-vu">dịch vụ</a> đúng mục, tư vấn kèm <a href="#dv-khac">dịch vụ đi kèm</a>.</li>
+<li>Thu thập nhu cầu của khách: Lesson / Hitting Partner / Thuê sân.</li>
+<li>Tư vấn và gửi thông tin <a href="#dich-vu">dịch vụ</a>, các <a href="#dv-khac">dịch vụ đi kèm</a>.</li>
 <li><a href="#check-lich">Check lịch</a> và gửi lịch cho khách.</li>
-<li>Sau khi chốt deal, <a href="#confirm"><b>Confirm booking</b></a> với khách bằng tin nhắn.</li>
+<li>Sau khi chốt deal (<a href="#confirm">xem mẫu</a>):<ol type="a">
+<li>Xin thông tin khách: tên, email, số điện thoại.</li>
+<li>Xác nhận hình thức thanh toán.</li>
+<li><b>Confirm booking</b> với khách bằng tin nhắn.</li></ol></li>
 <li><a href="#booking">Đặt lịch</a> cho khách trong app Booking.</li>
 <li><a href="#gui-bill">Gửi hoá đơn</a> và theo dõi thanh toán.</li>
 <li><a href="#tick-task">Hoàn thành task trên app</a>: làm xong việc đã hứa thì bấm ✓ Xong.</li>
@@ -210,7 +213,13 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="warn"><b>Lịch head coach (Coach Đăng, Coach Hoàng):</b> phải check tay và hỏi ý kiến coach trước khi chốt với khách.</div>
 </div>
 <div class="sub" id="confirm">
-<h2 class="subh">Confirm booking với khách</h2>
+<h2 class="subh">Sau khi chốt deal: thông tin khách, thanh toán, confirm</h2>
+<div class="card"><b>Làm theo thứ tự:</b><ol>
+<li>Xin thông tin khách để đặt lịch: tên, email, số điện thoại.</li>
+<li>Xác nhận hình thức thanh toán: Credit card / PayPal (phí 3,4%) hoặc chuyển khoản (không phí).</li>
+<li>Gửi tin confirm booking.</li></ol></div>
+<div class="tpl" data-t="askinfo"></div>
+<div class="tpl" data-t="paymethod"></div>
 <div class="warn"><b>Bắt buộc gửi tin confirm để chốt booking.</b> Admin ca sau dựa vào tin này để kiểm tra và xử lý, nên khách không bị hiểu lầm thông tin.</div>
 <div class="card"><b>Tin confirm phải có đủ:</b><ul>
 <li><b>Ngày giờ</b> từng buổi</li>
@@ -449,6 +458,8 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="tpl" data-t="asktime"></div>
 <div class="tpl" data-t="offeralt"></div>
 <div class="tpl" data-t="sendsched"></div>
+<div class="tpl" data-t="askinfo"></div>
+<div class="tpl" data-t="paymethod"></div>
 <div class="tpl" data-t="confirm"></div>
 <div class="tpl" data-t="confirm2"></div>
 </div>
@@ -468,6 +479,12 @@ const IMGS = {"ck-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 
 /* TIN NHẮN MẪU: sửa chữ ở đây. */
 const T = {
+askinfo:{title:"Xin thông tin khách để đặt lịch",
+en:"To complete your booking in our system, may I have your:\n• Full name\n• Email\n• Phone number",
+vi:"Để mình đặt lịch cho bạn trên hệ thống, bạn cho mình xin thông tin:\n• Họ tên\n• Email\n• Số điện thoại"},
+paymethod:{title:"Xác nhận hình thức thanh toán",
+en:"Thank you for your information. Let me book it for you and send you the invoice.\nYou can pay by:\n• Credit card or PayPal (3.4% card fee)\n• Bank transfer (no fee)\nWhich option do you prefer?",
+vi:"Cảm ơn bạn đã gửi thông tin. Mình sẽ đặt lịch và gửi hoá đơn cho bạn.\nBạn có thể thanh toán bằng:\n• Thẻ tín dụng hoặc PayPal (phí thẻ 3,4%)\n• Chuyển khoản ngân hàng (không mất phí)\nBạn muốn thanh toán theo hình thức nào ạ?"},
 sendsched:{title:"Gửi lịch cho khách (nhiều khung giờ)",
 en:"May I confirm your booking:\n\nPrivate Lesson 1:3 with Senior Coach – Daytime (Indoor)\nSunday (22/11)\n• 12:00 – 2:00 PM\n• 6:00 – 8:00 PM\n\nLocation: ACTN Tennis Academy – An Phu Base (indoor court)\nhttps://maps.app.goo.gl/nvZSz8EGkSUzXdbx6\nOn Grab, simply search for “ACTN Tennis Academy” to find the right location.",
 vi:"Mình xin xác nhận lại lịch của bạn:\n\nPrivate Lesson 1:3 cùng Senior Coach – Daytime (Indoor)\nChủ nhật (22/11)\n• 12:00 – 2:00 PM\n• 6:00 – 8:00 PM\n\nĐịa điểm: ACTN Tennis Academy – An Phú Base (sân có mái che)\nhttps://maps.app.goo.gl/nvZSz8EGkSUzXdbx6\nKhi đặt Grab, bạn gõ “ACTN Tennis Academy” để tìm đúng địa điểm nhé."},
@@ -562,7 +579,7 @@ function copyImg(src){
 function openImg(src){const w=window.open("");if(w){w.document.write('<title>Ảnh</title><body style="margin:0;background:#111"><img src="'+src+'" style="max-width:100%;display:block;margin:auto"><p style="color:#ccc;font:14px sans-serif;text-align:center">Nhấn giữ hoặc chuột phải vào ảnh → Copy Image</p>');w.document.close()}}
 $("#lb").onclick=()=>$("#lb").classList.remove("on");
 /* TÓM TẮT 1 DÒNG cho từng mục thu gọn */
-const SUM={"nc-steps": "Bấm Nhận ca ở Home, xem việc ca trước để lại, check tin nhắn.", "check-tn": "Check trực tiếp từng app, hoặc xem nhanh ở tab Tin nhắn chờ.", "luu-y": "Ưu tiên trả lời khách, cách xử lý khi đông khách và việc phát sinh gấp.", "khach-moi": "Mẫu lời chào và câu hỏi hình thức lesson.", "dia-diem": "An Phú (mái che) và Thảo Điền (ngoài trời), kèm link Google Maps.", "private": "3 cấp coach, giá tại sân ACTN và tại sân của khách.", "hitting": "3 level, bảng giá Hitting Partner.", "group": "Lịch lớp Kid và người lớn, gửi link web để khách tự đặt.", "thue-san": "Điều kiện thuê, giá sân Outdoor và Indoor.", "dv-khac": "Thuê vợt, Ball boy: tư vấn trước khi chốt deal.", "check-lich": "Hỏi giờ khách muốn, check lịch, gợi ý giờ khác nếu kín.", "confirm": "Bắt buộc gửi tin confirm: ngày giờ, dịch vụ, địa điểm.", "booking": "Tạo booking trên tab Lịch, rồi chọn hình thức thanh toán.", "gui-bill": "A. Chuyển khoản qua app Booking · B. Thẻ / PayPal qua Wix.", "tick-task": "Làm xong việc đã hứa thì bấm ✓ Xong, không bấm sẽ bị trừ điểm.", "ket-ca": "Giao ca trước 5–10 phút, chọn lý do cho việc chưa xong.", "mt-1": "Lời chào, hỏi hình thức lesson, nhắn khách chờ.", "mt-2": "Địa điểm, giá private, group, app, thuê sân, dịch vụ đi kèm.", "mt-3": "Hỏi giờ, gợi ý giờ khác, confirm 1 ngày / nhiều ngày.", "mt-4": "Hoá đơn chuyển khoản, hạn thanh toán, link thẻ / PayPal."};
+const SUM={"nc-steps": "Bấm Nhận ca ở Home, xem việc ca trước để lại, check tin nhắn.", "check-tn": "Check trực tiếp từng app, hoặc xem nhanh ở tab Tin nhắn chờ.", "luu-y": "Ưu tiên trả lời khách, cách xử lý khi đông khách và việc phát sinh gấp.", "khach-moi": "Mẫu lời chào và câu hỏi hình thức lesson.", "dia-diem": "An Phú (mái che) và Thảo Điền (ngoài trời), kèm link Google Maps.", "private": "3 cấp coach, giá tại sân ACTN và tại sân của khách.", "hitting": "3 level, bảng giá Hitting Partner.", "group": "Lịch lớp Kid và người lớn, gửi link web để khách tự đặt.", "thue-san": "Điều kiện thuê, giá sân Outdoor và Indoor.", "dv-khac": "Thuê vợt, Ball boy: tư vấn trước khi chốt deal.", "check-lich": "Hỏi giờ khách muốn, check lịch, gợi ý giờ khác nếu kín.", "confirm": "Xin thông tin khách, xác nhận cách thanh toán, gửi tin confirm (bắt buộc).", "booking": "Tạo booking trên tab Lịch, rồi chọn hình thức thanh toán.", "gui-bill": "A. Chuyển khoản qua app Booking · B. Thẻ / PayPal qua Wix.", "tick-task": "Làm xong việc đã hứa thì bấm ✓ Xong, không bấm sẽ bị trừ điểm.", "ket-ca": "Giao ca trước 5–10 phút, chọn lý do cho việc chưa xong.", "mt-1": "Lời chào, hỏi hình thức lesson, nhắn khách chờ.", "mt-2": "Địa điểm, giá private, group, app, thuê sân, dịch vụ đi kèm.", "mt-3": "Hỏi giờ, gợi ý giờ khác, gửi lịch, xin thông tin, thanh toán, confirm.", "mt-4": "Hoá đơn chuyển khoản, hạn thanh toán, link thẻ / PayPal."};
 $$(".sub").forEach(sb=>{if(sb.id==="luong"||sb.classList.contains("svc"))return;const h=sb.querySelector(":scope>h2.subh");if(!h)return;
  const body=document.createElement("div");body.className="acc-b";while(h.nextSibling)body.appendChild(h.nextSibling);
  const sm=document.createElement("p");sm.className="acc-s";sm.textContent=SUM[sb.id]||"";sb.append(sm,body);sb.classList.add("acc");
@@ -573,7 +590,7 @@ if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t){
 /* MENU CON: sửa danh sách tab con ở đây (id phần → tên hiện) */
 const SUB={
 "nhan-ca":[["nc-steps","Các bước nhận ca"],["check-tn","Check tin nhắn"]],
-"lam-viec":[["luong","Luồng tư vấn"],["dich-vu","Tư vấn dịch vụ"],["check-lich","Check lịch"],["confirm","Confirm booking"],["booking","Đặt lịch"],["gui-bill","Gửi hoá đơn"]],
+"lam-viec":[["luong","Luồng tư vấn"],["dich-vu","Tư vấn dịch vụ"],["check-lich","Check lịch"],["confirm","Chốt deal & confirm"],["booking","Đặt lịch"],["gui-bill","Gửi hoá đơn"]],
 "ca-end":[["ket-ca","Các bước giao ca"]],
 "mau-tin":[["mt-1","Mở đầu"],["mt-2","Dịch vụ"],["mt-3","Lịch & confirm"],["mt-4","Hoá đơn"]],
 "dich-vu":[["dia-diem","Địa điểm"],["private","Private"],["hitting","Hitting Partner"],["group","Group"],["thue-san","Thuê sân"],["dv-khac","DV đi kèm"]]};
