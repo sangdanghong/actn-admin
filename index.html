@@ -141,9 +141,18 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 </div>
 <div class="sub svc" id="dich-vu">
 <h2 class="subh">Thông tin dịch vụ</h2>
+<div class="sub" id="dia-diem">
+<h2 class="subh">Địa điểm 2 cụm sân ACTN</h2>
+<div class="card"><ol>
+<li><b>ACTN Tennis Academy – An Phú Base</b> (sân có mái che) · <a href="https://maps.app.goo.gl/nvZSz8EGkSUzXdbx6" target="_blank" rel="noopener">Google Maps</a></li>
+<li><b>ACTN Tennis Club – Thảo Điền Base</b> (sân ngoài trời, private) · <a href="https://maps.app.goo.gl/Cbwo5yoPq1tdcMuP7" target="_blank" rel="noopener">Google Maps</a></li></ol>
+<span style="color:var(--mute)">Trên Grab: gõ “ACTN Tennis Academy” hoặc “ACTN Tennis Club”.</span></div>
+<div class="tpl" data-t="locations"></div>
+</div>
 <div class="sub" id="private">
 <h2 class="subh">Private Lesson</h2>
 <div class="card"><b>3 cấp coach:</b> Junior · Senior · Head<br><span style="color:var(--mute)">Head coach không dạy ở sân khác.</span></div>
+<h3>Private tại sân ACTN (đã gồm tiền sân và bóng)</h3>
 <figure class="img" data-img="p-1" data-cap="Bảng giá + thông tin 3 level coach (tại ACTN)"></figure>
 <h3>Private tại sân của khách (giá chưa gồm tiền sân)</h3>
 <div class="card scroll"><table>
@@ -226,7 +235,7 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="card"><b>Tin confirm phải có đủ:</b><ul>
 <li><b>Ngày giờ</b> từng buổi</li>
 <li><b>Thông tin lesson / dịch vụ</b> (loại lesson, coach, thuê sân...)</li>
-<li><b>Địa điểm</b> rõ ràng (sân An Phú trong nhà / Thảo Điền ngoài trời)</li></ul></div>
+<li><b>Địa điểm</b> rõ ràng (sân An Phú trong nhà / Thảo Điền ngoài trời). Khách mới cần gửi kèm <a href="#dia-diem">địa chỉ sân</a>.</li></ul></div>
 <div class="tpl" data-t="confirm"></div>
 <div class="tpl" data-t="confirm2"></div>
 <div class="card">Đổi ngày giờ, dịch vụ và sân theo đúng booking của khách trước khi gửi.</div>
@@ -356,6 +365,9 @@ const IMGS = {"1-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAM
 
 /* TIN NHẮN MẪU: sửa chữ ở đây. */
 const T = {
+locations:{title:"Địa điểm 2 cụm sân ACTN",
+en:"We currently have 2 locations:\n\n1. ACTN Tennis Academy – An Phu Base (sheltered courts)\nhttps://maps.app.goo.gl/nvZSz8EGkSUzXdbx6\n\n2. ACTN Tennis Club – Thao Dien Base (outdoor private court)\nhttps://maps.app.goo.gl/Cbwo5yoPq1tdcMuP7\n\nOn Grab, simply search for “ACTN Tennis Academy” or “ACTN Tennis Club” to find the right location.",
+vi:"Hiện ACTN có 2 cụm sân:\n\n1. ACTN Tennis Academy – An Phú Base (sân có mái che)\nhttps://maps.app.goo.gl/nvZSz8EGkSUzXdbx6\n\n2. ACTN Tennis Club – Thảo Điền Base (sân ngoài trời, private)\nhttps://maps.app.goo.gl/Cbwo5yoPq1tdcMuP7\n\nKhi đặt Grab, bạn gõ “ACTN Tennis Academy” hoặc “ACTN Tennis Club” để tìm đúng địa điểm nhé."},
 asktime:{title:"Hỏi thời gian khách muốn tập",
 en:"May I know which days and times work best for you? Please share a few preferred options, and I will check the schedule for you.",
 vi:"Bạn cho mình biết ngày và khung giờ bạn tiện tập nhé. Bạn có thể gửi vài lựa chọn để mình kiểm tra lịch cho bạn ạ."},
@@ -447,7 +459,7 @@ $("#lb").onclick=()=>$("#lb").classList.remove("on");
 const SUB={
 "nhan-ca":[["nhan-ca","Các bước nhận ca"],["check-tn","Check tin nhắn"]],
 "lam-viec":[["luong","Luồng tư vấn"],["khach-moi","Khách mới"],["dich-vu","Tư vấn dịch vụ"],["check-lich","Check lịch"],["confirm","Confirm booking"],["booking","Book lesson"],["gui-bill","Gửi bill"],["tick-task","Hoàn thành task"],["ket-ca","Kết ca"]],
-"dich-vu":[["private","Private"],["hitting","Hitting Partner"],["group","Group"],["thue-san","Thuê sân"],["dv-khac","DV đi kèm"]]};
+"dich-vu":[["dia-diem","Địa điểm"],["private","Private"],["hitting","Hitting Partner"],["group","Group"],["thue-san","Thuê sân"],["dv-khac","DV đi kèm"]]};
 const MARK=[["nhan-ca","nhan-ca"],["lam-viec","lam-viec"],["dich-vu","dich-vu"],["check-lich","lam-viec"]];
 const top1=$$("#nav .row1 a"), sub=$("#subnav"); let cur="";
 function off(){return $("#nav").getBoundingClientRect().bottom+12}
