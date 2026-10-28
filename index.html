@@ -82,7 +82,6 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
 <a href="#nhan-ca">Nhận ca</a>
 <a href="#lam-viec">Quá trình làm</a>
 <a href="#dich-vu">Dịch vụ</a>
-<a href="#ket-ca">Kết ca</a>
 </div><div class="row2" id="subnav"></div></nav>
 <header>
 <h1>ACTN · Hướng dẫn Admin theo ca</h1>
@@ -118,7 +117,8 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
 <li>Sau khi chốt deal, <a href="#confirm"><b>Confirm booking</b></a> với khách bằng tin nhắn.</li>
 <li><a href="#booking">Book lesson</a> cho khách trong app Booking.</li>
 <li><a href="#gui-bill">Gửi bill</a> và theo dõi thanh toán.</li>
-<li>Làm xong việc đã hứa → bấm <a href="#tick-task">✓ Xong</a> trong app.</li>
+<li><a href="#tick-task">Hoàn thành task trên app</a>: làm xong việc đã hứa thì bấm ✓ Xong.</li>
+<li>Hết ca: bàn giao task chưa xong và bấm <a href="#ket-ca">Kết ca</a>.</li>
 </ol></div>
 <div class="warn"><b>Ưu tiên số 1:</b> task trả lời khách đúng hạn để không bị trừ điểm. Chi tiết thưởng phạt xem file riêng: <span class="todo">[gắn link file thưởng phạt]</span></div>
 <div class="card"><b>Nhiều khách nhắn cùng lúc</b><ul>
@@ -329,23 +329,22 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="tpl" data-t="billcard"></div>
 </div>
 <div class="sub" id="tick-task">
-<h2 class="subh">Xong việc: bấm Xong</h2>
+<h2 class="subh">Hoàn thành task trên app</h2>
 <div class="step">
 <div class="sl"><div><span class="n">1</span><span>Mở tab <b>Home</b> (biểu tượng ngôi nhà trên thanh menu)</span></div><div><span class="n g">2</span><span>Task do app tự liệt kê từ tin nhắn với khách (việc đã hứa, việc cần làm)</span></div><div><span class="n">3</span><span>Làm xong thì bấm <b>✓ Xong</b> ngay</span></div></div>
 <figure class="img" data-img="xg-a" data-cap="Tab Home, mục Làm ngay, nút Xong"></figure>
 <div class="warn" style="margin:0"><b>Không bấm Xong sẽ bị trừ điểm.</b> Hệ thống không tự biết bạn đã làm xong.</div>
 </div>
 </div>
-</section>
-
-<section class="grp" id="ket-ca">
-<h2>3. Kết ca</h2>
+<div class="sub" id="ket-ca">
+<h2 class="subh">Kết ca</h2>
 <div class="warn"><b>Bấm Kết ca ở trang Home trước giờ hết ca.</b> Hệ thống tự đóng ca và trừ điểm mọi task chưa bàn giao, bất kể lý do chưa xong.</div>
 <div class="card"><ol>
 <li>Task chưa xong → bàn giao cho ca sau.</li>
 <li>Vào Home, bấm <b>Kết ca</b>.</li></ol></div>
 <figure class="img" data-img="k-1" data-cap="Thao tác bàn giao task"></figure>
 <figure class="img" data-img="k-2" data-cap="Home → nút Kết ca"></figure>
+</div>
 </section>
 
 </main>
@@ -447,18 +446,17 @@ $("#lb").onclick=()=>$("#lb").classList.remove("on");
 /* MENU CON: sửa danh sách tab con ở đây (id phần → tên hiện) */
 const SUB={
 "nhan-ca":[["nhan-ca","Các bước nhận ca"],["check-tn","Check tin nhắn"]],
-"lam-viec":[["luong","Luồng tư vấn"],["khach-moi","Khách mới"],["check-lich","Check lịch"],["confirm","Confirm booking"],["booking","Book lesson"],["gui-bill","Gửi bill"],["tick-task","Bấm Xong"]],
-"dich-vu":[["private","Private"],["hitting","Hitting Partner"],["group","Group"],["thue-san","Thuê sân"],["dv-khac","DV đi kèm"]],
-"ket-ca":[]};
-const MARK=[["nhan-ca","nhan-ca"],["lam-viec","lam-viec"],["dich-vu","dich-vu"],["check-lich","lam-viec"],["ket-ca","ket-ca"]];
+"lam-viec":[["luong","Luồng tư vấn"],["khach-moi","Khách mới"],["check-lich","Check lịch"],["confirm","Confirm booking"],["booking","Book lesson"],["gui-bill","Gửi bill"],["tick-task","Hoàn thành task"],["ket-ca","Kết ca"]],
+"dich-vu":[["private","Private"],["hitting","Hitting Partner"],["group","Group"],["thue-san","Thuê sân"],["dv-khac","DV đi kèm"]]};
+const MARK=[["nhan-ca","nhan-ca"],["lam-viec","lam-viec"],["dich-vu","dich-vu"],["check-lich","lam-viec"]];
 const top1=$$("#nav .row1 a"), sub=$("#subnav"); let cur="";
 function off(){return $("#nav").getBoundingClientRect().bottom+12}
 function showSub(k){if(k===cur)return;cur=k;top1.forEach(a=>a.classList.toggle("on",a.hash==="#"+k));
  sub.innerHTML=(SUB[k]||[]).map(([id,t])=>'<a href="#'+id+'">'+t+'</a>').join("")}
 function upd(){const o=off();let k="nhan-ca";
  for(const [id,key] of MARK){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=o+40)k=key}
- if(innerHeight+scrollY>=document.body.scrollHeight-4)k="ket-ca";
  showSub(k);let a="";for(const [id] of (SUB[k]||[])){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=o+40)a=id}
+ if(k==="lam-viec"&&innerHeight+scrollY>=document.documentElement.scrollHeight-4)a="ket-ca";
  $$("a",sub).forEach(x=>{const on=x.hash==="#"+a;x.classList.toggle("on",on);if(on&&x.scrollIntoView&&sub.scrollWidth>sub.clientWidth){sub.scrollLeft=x.offsetLeft-20}})}
 top1.forEach(a=>a.addEventListener("click",()=>showSub(a.hash.slice(1))));
 addEventListener("scroll",upd,{passive:true});upd();
