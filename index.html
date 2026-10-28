@@ -102,12 +102,13 @@ section.grp{margin-top:44px}
 
 <section class="grp" id="lam-viec">
 <h2>2. Quá trình làm</h2>
-<div class="chips"><a href="#luong">Luồng tư vấn</a><a href="#khach-moi">Khách mới</a><a href="#dv-khac">Dịch vụ khác</a><a href="#confirm">Confirm booking</a><a href="#booking">Cách book lesson</a><a href="#gui-bill">Gửi bill</a><a href="#tick-task">Bấm Xong</a></div>
+<div class="chips"><a href="#luong">Luồng tư vấn</a><a href="#khach-moi">Khách mới</a><a href="#check-lich">Check lịch</a><a href="#dv-khac">Dịch vụ khác</a><a href="#confirm">Confirm booking</a><a href="#booking">Cách book lesson</a><a href="#gui-bill">Gửi bill</a><a href="#tick-task">Bấm Xong</a></div>
 <div class="sub" id="luong">
 <div class="card"><b>Luồng tư vấn nhanh</b><ol>
 <li>Khách mới → gửi <a href="#khach-moi">lời chào</a>.</li>
 <li>Hỏi khách cần gì: Lesson / Hitting Partner / Thuê sân.</li>
 <li>Gửi thông tin <a href="#dich-vu">dịch vụ</a> đúng mục, tư vấn kèm <a href="#dv-khac">dịch vụ phụ</a>.</li>
+<li><a href="#check-lich">Check lịch</a> và gửi lịch cho khách.</li>
 <li>Sau khi chốt deal, <a href="#confirm"><b>Confirm booking</b></a> với khách bằng tin nhắn.</li>
 <li><a href="#booking">Book lesson</a> cho khách trong app Booking.</li>
 <li><a href="#gui-bill">Gửi bill</a> và theo dõi thanh toán.</li>
@@ -131,6 +132,28 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <h3>Khách hỏi Lesson</h3>
 <div class="tpl" data-t="lesson"></div>
 <div class="card">Khách chọn <b>Hitting Partner</b> hoặc <b>Thuê sân</b> → xem mục <a href="#dich-vu">Dịch vụ</a>.</div>
+</div>
+<div class="sub" id="check-lich">
+<h2 class="subh">Check lịch và gửi lịch cho khách</h2>
+<div class="card"><b>Làm sau khi gửi thông tin dịch vụ</b><ol>
+<li>Hỏi thời gian khách muốn tập.</li>
+<li>Check lịch theo nhu cầu của khách. Giờ đó bận → offer các option khác gần giống nhu cầu của khách.</li>
+</ol></div>
+<div class="tpl" data-t="asktime"></div>
+<div class="tpl" data-t="offeralt"></div>
+<h3>2 cách check lịch</h3>
+<div class="card"><ol>
+<li><b>Mở tab Lịch</b>, check thủ công.</li>
+<li><b>Dùng tính năng check sân trống</b>: nên dùng khi khách cần ít ngày.</li>
+</ol></div>
+<figure class="img" data-img="ck-1" data-cap="Tab Lịch: check thủ công"></figure>
+<figure class="img" data-img="ck-2" data-cap="Tính năng check sân trống"></figure>
+<h3>Quy tắc check lịch</h3>
+<div class="card"><ul>
+<li>Các coach <b>không được trùng giờ</b> (hệ thống sẽ tự check).</li>
+<li><b>Hạn chế</b> xếp các lesson <b>giờ liền kề nhưng khác địa điểm</b>.</li>
+</ul></div>
+<div class="warn"><b>Lịch head coach (Coach Đăng, Coach Hoàng):</b> phải check tay và hỏi ý kiến coach trước khi chốt với khách.</div>
 </div>
 <div class="sub" id="dv-khac">
 <h2 class="subh">Tư vấn dịch vụ khác (trước khi chốt deal)</h2>
@@ -330,6 +353,12 @@ const IMGS = {"1-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAM
 
 /* TIN NHẮN MẪU: sửa chữ ở đây. */
 const T = {
+asktime:{title:"Hỏi thời gian khách muốn tập",
+en:"May I know which days and times work best for you? Please share a few preferred options, and I will check the schedule for you.",
+vi:"Bạn cho mình biết ngày và khung giờ bạn tiện tập nhé. Bạn có thể gửi vài lựa chọn để mình kiểm tra lịch cho bạn ạ."},
+offeralt:{title:"Giờ khách chọn đã kín, gợi ý giờ khác",
+en:"Thank you for waiting. Unfortunately, [time] on [date] is already fully booked. We have these options close to your preferred time:\n• [Option 1]\n• [Option 2]\nWould any of these work for you?",
+vi:"Cảm ơn bạn đã chờ. Rất tiếc khung giờ [giờ] ngày [ngày] đã kín lịch. Bên mình có một số lựa chọn gần với thời gian bạn mong muốn:\n• [Lựa chọn 1]\n• [Lựa chọn 2]\nBạn thấy lựa chọn nào phù hợp không ạ?"},
 invterms:{title:"Ghi chú hạn thanh toán (ô Terms của invoice)",
 en:"Please make the payment before 10:00 AM on [date] so we can keep the spot for you. Thank and best regards.",
 vi:"Vui lòng thanh toán trước 10:00 AM ngày [ngày] để bên mình giữ chỗ cho bạn. Trân trọng cảm ơn bạn."},
