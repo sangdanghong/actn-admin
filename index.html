@@ -75,6 +75,20 @@ nav .row2 a{font-size:13px;padding:4px 10px;background:var(--ph);border-color:tr
 nav .row2 a.on{background:transparent;color:var(--court);border-color:var(--court)}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
 .svc>h2.subh{font-size:21px;border-left-color:var(--ball)}
+.sub.acc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:10px}
+.acc>h2.subh{cursor:pointer;margin:0;display:flex;align-items:center;gap:8px;font-size:17px;user-select:none}
+.acc>h2.subh::after{content:"+";margin-left:auto;font-size:24px;color:var(--mute);font-weight:400;line-height:1}
+.acc.open>h2.subh::after{content:"−"}
+.acc>.acc-s{margin:4px 0 0 14px;color:var(--mute);font-size:14px;line-height:1.4}
+.acc.open>.acc-s{display:none}
+.acc>.acc-b{display:none;margin-top:12px}.acc.open>.acc-b{display:block}
+.svc{margin-top:18px}.svc>h2.subh{margin-bottom:0}
+section.grp{margin-top:30px}
+figure.img.upd{min-height:0;padding:10px;font-size:13px;border-style:dashed}
+nav .row1 a{padding:6px 10px;font-size:13.5px}
+.notes-h{margin:16px 0 0;font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.5px}
+.sub.note.acc{background:var(--ph);margin-top:8px;padding:10px 14px}
+.sub.note.acc>h2.subh{font-size:15px;border-left-color:var(--mute)}
 </style>
 </head>
 <body>
@@ -82,21 +96,27 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
 <a href="#nhan-ca">Nhận ca</a>
 <a href="#lam-viec">Quá trình làm</a>
 <a href="#dich-vu">Dịch vụ</a>
+<a href="#ca-end">Kết ca</a>
+<a href="#mau-tin">Mẫu tin</a>
 </div><div class="row2" id="subnav"></div></nav>
 <header>
 <h1>ACTN · Hướng dẫn Admin theo ca</h1>
-<p>Bấm menu để nhảy tới bước cần làm. Bấm “Copy” để lấy tin nhắn mẫu, chọn EN hoặc VI trước.</p>
+<p>Bấm vào từng mục để mở xem. Tin nhắn mẫu gom ở tab <b>Mẫu tin</b>.</p>
 </header>
 <main>
 <section class="grp" id="nhan-ca">
 <h2>1. Nhận ca</h2>
+<div class="sub" id="nc-steps">
+<h2 class="subh">Các bước nhận ca</h2>
 <div class="card"><ol>
 <li>Mở app Booking, tab <b>Home</b>, bấm <b>Nhận ca</b>. Quá 15 phút chưa nhận ca, hệ thống sẽ báo quản lý.</li>
 <li>Xem việc <b>bạn sẽ nhận</b> và việc <b>ca trước để lại</b> (app tự thống kê).</li>
 <li>Check lại các tin nhắn trên các nền tảng để không bỏ sót. <span class="must">Ưu tiên trả lời khách trước, không để khách chờ.</span></li>
 </ol></div>
 <figure class="img" data-img="1-1" data-cap="Home: nút Nhận ca và việc ca trước để lại" style="max-width:430px;margin:10px auto"></figure>
-<h3 id="check-tn">Các nơi cần check tin nhắn</h3>
+</div>
+<div class="sub" id="check-tn">
+<h2 class="subh">Check tin nhắn</h2>
 <div class="card"><ol>
 <li><b>Nên check trực tiếp từ các app:</b> Zalo OA, WhatsApp, Booking trên Wix, Instagram, Facebook.</li>
 <li><b>Có thể check ở tab “Tin nhắn chờ”</b> trong app Booking (Zalo OA, WhatsApp, Wix). Instagram và Facebook không có trong tab này, phải mở thẳng từng app.</li>
@@ -104,6 +124,7 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
 <figure class="img" data-img="1-3" data-cap="Tab Tin nhắn chờ trong app Booking"></figure>
 <div class="card"><div class="steps1"><b>1</b> Tab <b>Tin nhắn chờ</b><br><b>2</b> Booking request từ <b>Website Wix</b>: duyệt, đổi giờ hoặc từ chối<br><b>3</b> Tin nhắn khách từ <b>Zalo OA</b> và <b>WhatsApp</b>: trả lời trước<br><b>4</b> Nút <b>Tạo booking</b>: hệ thống tự đọc tin nhắn với khách và lên booking sẵn, admin chỉ cần kiểm tra và xác nhận</div></div>
 
+</div>
 </section>
 
 <section class="grp" id="lam-viec">
@@ -112,15 +133,19 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
 <div class="card"><b>Luồng tư vấn nhanh</b><ol>
 <li>Khách mới → gửi <a href="#khach-moi">lời chào</a>.</li>
 <li>Hỏi khách cần gì: Lesson / Hitting Partner / Thuê sân.</li>
-<li>Gửi thông tin <a href="#dich-vu">dịch vụ</a> đúng mục, tư vấn kèm <a href="#dv-khac">dịch vụ phụ</a>.</li>
+<li>Gửi thông tin <a href="#dich-vu">dịch vụ</a> đúng mục, tư vấn kèm <a href="#dv-khac">dịch vụ đi kèm</a>.</li>
 <li><a href="#check-lich">Check lịch</a> và gửi lịch cho khách.</li>
 <li>Sau khi chốt deal, <a href="#confirm"><b>Confirm booking</b></a> với khách bằng tin nhắn.</li>
-<li><a href="#booking">Book lesson</a> cho khách trong app Booking.</li>
-<li><a href="#gui-bill">Gửi bill</a> và theo dõi thanh toán.</li>
+<li><a href="#booking">Đặt lịch</a> cho khách trong app Booking.</li>
+<li><a href="#gui-bill">Gửi hoá đơn</a> và theo dõi thanh toán.</li>
 <li><a href="#tick-task">Hoàn thành task trên app</a>: làm xong việc đã hứa thì bấm ✓ Xong.</li>
 <li>Hết ca: <a href="#ket-ca">Giao ca</a> trước 5–10 phút, bàn giao việc chưa xong.</li>
 </ol></div>
-<div class="warn"><b>Ưu tiên số 1:</b> task trả lời khách đúng hạn để không bị trừ điểm. Chi tiết thưởng phạt xem file riêng: <span class="todo">[gắn link file thưởng phạt]</span></div>
+</div>
+<p class="notes-h">Lưu ý (bấm để mở)</p>
+<div class="sub note" id="luu-y">
+<h2 class="subh">Lưu ý: Ưu tiên khi đông khách và việc gấp</h2>
+<div class="warn"><b>Ưu tiên số 1:</b> task trả lời khách đúng hạn để không bị trừ điểm. Chi tiết thưởng phạt xem file riêng: <span class="todo">Đang cập nhật</span></div>
 <div class="card"><b>Nhiều khách nhắn cùng lúc</b><ul>
 <li>Khách nhắn <b>trước</b> xử lý <b>trước</b>.</li>
 <li>Chưa kịp xử lý ngay → nhắn khách chờ bằng tin mẫu bên dưới, không để khách chờ im lặng.</li></ul></div>
@@ -132,12 +157,20 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 108px)!important}
 <li>Các tình huống tương tự</li></ul>
 Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang chờ.</div>
 </div>
-<div class="sub" id="khach-moi">
-<h2 class="subh">Khách mới</h2>
+<div class="sub note" id="khach-moi">
+<h2 class="subh">Lưu ý: Khách mới (lời chào)</h2>
 <div class="tpl" data-t="greet"></div>
 <h3>Khách hỏi Lesson</h3>
 <div class="tpl" data-t="lesson"></div>
 <div class="card">Khách chọn <b>Hitting Partner</b> hoặc <b>Thuê sân</b> → xem mục <a href="#dich-vu">Dịch vụ</a>.</div>
+</div>
+<div class="sub note" id="tick-task">
+<h2 class="subh">Lưu ý: Hoàn thành task trên app</h2>
+<div class="step">
+<div class="sl"><div><span class="n">1</span><span>Mở tab <b>Home</b> (biểu tượng ngôi nhà trên thanh menu)</span></div><div><span class="n g">2</span><span>Task do app tự liệt kê từ tin nhắn với khách (việc đã hứa, việc cần làm)</span></div><div><span class="n">3</span><span>Làm xong thì bấm <b>✓ Xong</b> ngay</span></div></div>
+<figure class="img" data-img="xg-a" data-cap="Tab Home, mục Làm ngay, nút Xong"></figure>
+<div class="warn" style="margin:0"><b>Không bấm Xong sẽ bị trừ điểm.</b> Hệ thống không tự biết bạn đã làm xong.</div>
+</div>
 </div>
 <div class="sub svc" id="dich-vu">
 <h2 class="subh">Thông tin dịch vụ</h2>
@@ -202,7 +235,7 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="sub" id="dv-khac">
 <h2 class="subh">Tư vấn dịch vụ đi kèm (trước khi chốt deal)</h2>
 <div class="card">Tư vấn trước khi chốt deal.<ul>
-<li>Racket rental: <b>100.000vnd/h/racket</b></li>
+<li>Thuê vợt: <b>100.000vnd/h/racket</b></li>
 <li>Ball boy: <b>100.000vnd/h</b></li></ul></div>
 <div class="tpl" data-t="extra"></div>
 </div>
@@ -241,7 +274,7 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="card">Đổi ngày giờ, dịch vụ và sân theo đúng booking của khách trước khi gửi.</div>
 </div>
 <div class="sub" id="booking">
-<h2 class="subh">Cách book lesson</h2>
+<h2 class="subh">Cách đặt lịch</h2>
 <div class="steps">
 <div class="step wide">
 <div class="sl"><div><span class="n">1</span><span>Mở app Booking, vào tab <b>Lịch</b></span></div><div><span class="n">2</span><span>Chọn ngày cần book (mũi tên ‹ › để đổi ngày)</span></div></div>
@@ -262,7 +295,7 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <li><b>Khách</b>: Khách cũ (gõ tên hoặc số điện thoại để tìm) hoặc Khách mới</li>
 <li><b>Địa điểm</b>, <b>ngày</b>, <b>giờ bắt đầu</b>, <b>thời lượng</b>, <b>số người chơi</b></li>
 <li><b>Loại bài học</b> và <b>sân thuê</b></li></ul></div>
-<div class="warn" style="margin:0"><span class="todo">[hướng dẫn nhập từng ô sẽ bổ sung]</span></div>
+<div class="warn" style="margin:0">Hướng dẫn nhập từng ô: <span class="todo">Đang cập nhật</span></div>
 </div>
 <div class="step wide">
 <div class="sl"><div><span class="n g">✓</span><span>Điền xong, kéo xuống và bấm <b>Tạo booking</b> → booking chuyển sang <b>Đang giữ chỗ</b></span></div></div>
@@ -271,14 +304,14 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <li>Tùy chọn: <b>dạy ngoài sân ACTN</b>, <b>lặp lại hàng tuần</b> (tạo sẵn 13 buổi trong 3 tháng)</li>
 <li><b>Số tiền</b>: bấm <b>Tính giá tự động</b>, vẫn sửa tay được nếu cần</li>
 <li><b>Kênh liên hệ</b>, <b>Yêu cầu của khách</b>, <b>Ghi chú nội bộ</b></li>
-<li><b>Thuê vợt</b> và <b>Lượm banh</b> (100k/giờ)</li></ul></div>
+<li><b>Thuê vợt</b> và <b>Ball boy</b> (ô “Lượm banh”, 100k/giờ)</li></ul></div>
 </div>
 <div class="step wide">
 <div class="sl"><div><span class="n">6</span><span>Kiểm tra đúng hết thông tin, rồi chọn <b>hình thức thanh toán</b></span></div></div>
 <figure class="img" data-img="bk-e" data-cap="Chọn hình thức thanh toán trong Chi tiết booking"></figure>
 <div class="card" style="margin:0"><ol style="padding-left:20px">
-<li><b>Gửi bill chuyển khoản</b>: khách chọn bank transfer. Có thể chọn nhiều lesson để xuất bill cùng lúc. <a href="#bill-bank">Xem Gửi bill</a></li>
-<li><b>Đã gửi invoice</b>: gửi invoice qua Wix, có kèm paylink để khách thanh toán bằng Credit Card hoặc PayPal (phí Visa 3–4%). <b>Phải bấm nút số 5 (Tạo trên Wix) trước</b> thì mới thao tác nhanh được trên Wix, nếu không sẽ phải tạo lesson thủ công trên Wix. <a href="#bill-card">Xem Gửi bill</a></li>
+<li><b>Gửi bill chuyển khoản</b>: khách chọn bank transfer. Có thể chọn nhiều lesson để xuất hoá đơn cùng lúc. <a href="#bill-bank">Xem mục A</a></li>
+<li><b>Đã gửi invoice</b>: gửi invoice qua Wix, có kèm paylink để khách thanh toán bằng Credit Card hoặc PayPal (phí Visa 3–4%). <b>Phải bấm nút số 5 (Tạo trên Wix) trước</b> thì mới thao tác nhanh được trên Wix, nếu không sẽ phải tạo lesson thủ công trên Wix. <a href="#bill-card">Xem mục B</a></li>
 <li><b>Thanh toán tại sân</b>: chỉ dùng cho khách quen đã tập lâu với ACTN (group hoặc private), hoặc khách tourist đã thử nhưng không thanh toán được bằng Credit Card, PayPal hay chuyển khoản. <b>Phải báo lên Group và được Mr Hoang duyệt trước khi thực hiện.</b></li>
 <li><b>Tính phí hàng tháng</b>: khách chốt lịch cố định và thanh toán theo tháng. Sau khi chọn, hệ thống tự lưu cho tất cả các lesson.</li>
 <li><b>Tạo trên Wix &amp; gửi email xác nhận</b>: bấm vào, hệ thống tự động tạo lesson lên Wix và gửi email xác nhận cho khách. <b>Bắt buộc làm sau khi tạo 1 lesson.</b></li></ol></div>
@@ -291,20 +324,20 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 </div>
 </div>
 <div class="sub" id="gui-bill">
-<h2 class="subh">Gửi bill và thanh toán</h2>
+<h2 class="subh">Gửi hoá đơn và thanh toán</h2>
 <div class="card scroll"><table>
 <tr><th>Khách thanh toán bằng</th><th>Làm ở đâu</th></tr>
-<tr><td>Chuyển khoản ngân hàng</td><td><a href="#bill-bank">App Booking</a></td></tr>
-<tr><td>Credit Card hoặc PayPal</td><td><a href="#bill-card">Wix</a></td></tr>
+<tr><td>Chuyển khoản ngân hàng</td><td><a href="#bill-bank">A. App Booking</a></td></tr>
+<tr><td>Credit Card hoặc PayPal</td><td><a href="#bill-card">B. Wix</a></td></tr>
 </table></div>
 
-<h3 id="bill-bank">Cách 1: Chuyển khoản ngân hàng (qua app Booking)</h3>
+<h3 id="bill-bank">A. Chuyển khoản ngân hàng (qua app Booking)</h3>
 <div class="steps">
 <div class="step wide">
-<div class="sl"><div><span class="n">1</span><span>Mở <b>Chi tiết booking</b> của lesson cần gửi bill</span></div></div>
+<div class="sl"><div><span class="n">1</span><span>Mở <b>Chi tiết booking</b> của lesson cần gửi hoá đơn</span></div></div>
 <div class="card" style="margin:0"><ul style="padding-left:20px">
-<li>Cách 1: vào tab <b>Lịch</b>, tìm đúng thời gian, mở lesson</li>
-<li>Cách 2: tab <b>Khách &amp; Booking</b> → <b>Khách hàng</b> → tìm tên khách → mở lesson</li></ul></div>
+<li>Từ tab <b>Lịch</b>: tìm đúng thời gian, mở lesson</li>
+<li>Từ tab <b>Khách &amp; Booking</b> → <b>Khách hàng</b> → tìm tên khách → mở lesson</li></ul></div>
 </div>
 <div class="step">
 <div class="sl"><div><span class="n">2</span><span>Bấm <b>Gửi bill chuyển khoản</b></span></div></div>
@@ -324,11 +357,11 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 </div>
 <div class="tpl" data-t="billbank"></div>
 
-<h3 id="bill-card">Cách 2: Credit Card hoặc PayPal (qua Wix invoice)</h3>
+<h3 id="bill-card">B. Thẻ Credit Card / PayPal (qua Wix invoice)</h3>
 <div class="warn"><b>Điều kiện:</b> đã bấm <b>Tạo trên Wix &amp; gửi email xác nhận</b> ở bước tạo booking, lesson mới có sẵn trên Wix.</div>
 <div class="steps">
 <div class="step wide">
-<div class="sl"><div><span class="n">1</span><span>Nhấn menu mở <b>Calendar</b></span></div><div><span class="n">2</span><span>Chọn <b>ngày</b> của lesson cần gửi bill</span></div><div><span class="n">3</span><span>Nhấn vào <b>lesson</b></span></div><div><span class="n">4</span><span>Nhấn vào vùng <b>avatar của khách</b></span></div></div>
+<div class="sl"><div><span class="n">1</span><span>Nhấn menu mở <b>Calendar</b></span></div><div><span class="n">2</span><span>Chọn <b>ngày</b> của lesson cần gửi hoá đơn</span></div><div><span class="n">3</span><span>Nhấn vào <b>lesson</b></span></div><div><span class="n">4</span><span>Nhấn vào vùng <b>avatar của khách</b></span></div></div>
 <figure class="img" data-img="w-1" data-cap="Wix Calendar: bước 1 đến 4"></figure>
 </div>
 <div class="step wide mid">
@@ -356,16 +389,13 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 </div>
 <div class="tpl" data-t="billcard"></div>
 </div>
-<div class="sub" id="tick-task">
-<h2 class="subh">Hoàn thành task trên app</h2>
-<div class="step">
-<div class="sl"><div><span class="n">1</span><span>Mở tab <b>Home</b> (biểu tượng ngôi nhà trên thanh menu)</span></div><div><span class="n g">2</span><span>Task do app tự liệt kê từ tin nhắn với khách (việc đã hứa, việc cần làm)</span></div><div><span class="n">3</span><span>Làm xong thì bấm <b>✓ Xong</b> ngay</span></div></div>
-<figure class="img" data-img="xg-a" data-cap="Tab Home, mục Làm ngay, nút Xong"></figure>
-<div class="warn" style="margin:0"><b>Không bấm Xong sẽ bị trừ điểm.</b> Hệ thống không tự biết bạn đã làm xong.</div>
-</div>
-</div>
+</section>
+
+
+<section class="grp" id="ca-end">
+<h2>3. Kết ca</h2>
 <div class="sub" id="ket-ca">
-<h2 class="subh">Kết ca</h2>
+<h2 class="subh">Các bước giao ca</h2>
 <div class="warn"><b>Nên bàn giao trước giờ hết ca 5–10 phút.</b> Đúng giờ hệ thống tự động kết ca. Việc chưa bàn giao sẽ bị app tự trừ điểm (theo cơ chế thưởng phạt).</div>
 <div class="steps">
 <div class="step">
@@ -380,6 +410,38 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 </div>
 </section>
 
+<section class="grp" id="mau-tin">
+<h2>Tin nhắn mẫu</h2>
+<p style="color:var(--mute);margin:-6px 0 6px">Gom tất cả tin nhắn mẫu theo thứ tự luồng tư vấn. Chọn EN/VI rồi bấm Copy.</p>
+<div class="sub" id="mt-1">
+<h2 class="subh">Mở đầu và khi đang bận</h2>
+<div class="tpl" data-t="greet"></div>
+<div class="tpl" data-t="lesson"></div>
+<div class="tpl" data-t="hold"></div>
+</div>
+<div class="sub" id="mt-2">
+<h2 class="subh">Thông tin dịch vụ</h2>
+<div class="tpl" data-t="locations"></div>
+<div class="tpl" data-t="privrate"></div>
+<div class="tpl" data-t="group"></div>
+<div class="tpl" data-t="app"></div>
+<div class="tpl" data-t="court"></div>
+<div class="tpl" data-t="extra"></div>
+</div>
+<div class="sub" id="mt-3">
+<h2 class="subh">Lịch và confirm</h2>
+<div class="tpl" data-t="asktime"></div>
+<div class="tpl" data-t="offeralt"></div>
+<div class="tpl" data-t="confirm"></div>
+<div class="tpl" data-t="confirm2"></div>
+</div>
+<div class="sub" id="mt-4">
+<h2 class="subh">Hoá đơn</h2>
+<div class="tpl" data-t="billbank"></div>
+<div class="tpl" data-t="invterms"></div>
+<div class="tpl" data-t="billcard"></div>
+</div>
+</section>
 </main>
 <div id="lb"><img alt=""></div>
 <div id="toast">Đã copy</div>
@@ -428,9 +490,9 @@ vi:"Để đặt lớp group và thuê sân nhanh chóng, thuận tiện hơn, m
 court:{title:"Thuê sân",
 en:"Thank you for your interest in our courts. Here is our court rental information:\n• Thao Dien (outdoor, private, tropical vibe, fully shaded after 1:00 PM): 290k morning / 390k evening\n• An Phu (4 covered courts, protected from sun and rain): +70k compared with Thao Dien\nWhich court and time would suit you best? We would be happy to arrange it for you.",
 vi:"Cảm ơn bạn đã quan tâm đến sân của ACTN. Mình xin gửi bạn thông tin thuê sân:\n• Thảo Điền (sân ngoài trời, riêng tư, nhiều cây xanh, có bóng mát cả sân từ sau 1:00 PM): 290k buổi sáng / 390k buổi tối\n• An Phú (4 sân có mái che, tránh nắng và mưa): +70k so với Thảo Điền\nBạn muốn đặt sân nào và khung giờ nào để mình sắp xếp giúp bạn ạ?"},
-billbank:{title:"Gửi bill chuyển khoản",
+billbank:{title:"Gửi hoá đơn chuyển khoản",
 en:"Thank you for your booking with ACTN Tennis Academy. Please find your bill attached.\nYou may complete the payment by bank transfer using the details below:\n[THÔNG TIN TÀI KHOẢN]\nKindly send us the transfer confirmation once completed. Thank you.",
-vi:"Cảm ơn bạn đã đặt lịch tại ACTN Tennis Academy. Mình xin gửi bạn bill của buổi học.\nBạn vui lòng chuyển khoản theo thông tin bên dưới:\n[THÔNG TIN TÀI KHOẢN]\nSau khi chuyển khoản, bạn gửi giúp mình ảnh xác nhận để mình cập nhật nhé."},
+vi:"Cảm ơn bạn đã đặt lịch tại ACTN Tennis Academy. Mình xin gửi bạn hoá đơn của buổi học.\nBạn vui lòng chuyển khoản theo thông tin bên dưới:\n[THÔNG TIN TÀI KHOẢN]\nSau khi chuyển khoản, bạn gửi giúp mình ảnh xác nhận để mình cập nhật nhé."},
 billcard:{title:"Gửi link thanh toán Credit Card / PayPal",
 en:"Thank you for your booking with ACTN Tennis Academy.\nYou may complete the payment by credit card or PayPal via the secure link below:\n[LINK THANH TOÁN WIX]\nPlease let us know if you need any assistance.",
 vi:"Cảm ơn bạn đã đặt lịch tại ACTN Tennis Academy.\nBạn có thể thanh toán bằng thẻ tín dụng hoặc PayPal qua link bảo mật bên dưới:\n[LINK THANH TOÁN WIX]\nNếu cần hỗ trợ thêm, bạn cứ nhắn mình nhé."},
@@ -461,7 +523,7 @@ $$(".tpl").forEach(el=>{
 $$("figure.img").forEach(f=>{
   const id=f.dataset.img, src=IMGS[id];
   if(src){f.classList.add("has");const i=new Image();i.src=src;i.alt=f.dataset.cap;i.onclick=()=>{const lb=$("#lb");$("img",lb).src=src;lb.classList.add("on")};f.appendChild(i)}
-  else f.textContent="📷 Chưa có ảnh · "+f.dataset.cap+" (mã "+id+")";
+  else{f.classList.add("upd");f.textContent="Ảnh đang cập nhật · "+f.dataset.cap}
   if(src&&CAP[id]){
     const bar=document.createElement("div");bar.className="bar";let lg="en";
     bar.innerHTML='<button class="go" data-a="img">Copy ảnh</button><span>rồi</span><button data-l="en" class="on">EN</button><button data-l="vi">VI</button><button class="go" data-a="txt">Copy câu text</button>';
@@ -479,22 +541,33 @@ function copyImg(src){
 }
 function openImg(src){const w=window.open("");if(w){w.document.write('<title>Ảnh</title><body style="margin:0;background:#111"><img src="'+src+'" style="max-width:100%;display:block;margin:auto"><p style="color:#ccc;font:14px sans-serif;text-align:center">Nhấn giữ hoặc chuột phải vào ảnh → Copy Image</p>');w.document.close()}}
 $("#lb").onclick=()=>$("#lb").classList.remove("on");
+/* TÓM TẮT 1 DÒNG cho từng mục thu gọn */
+const SUM={"nc-steps": "Bấm Nhận ca ở Home, xem việc ca trước để lại, check tin nhắn.", "check-tn": "Check trực tiếp từng app, hoặc xem nhanh ở tab Tin nhắn chờ.", "luu-y": "Ưu tiên trả lời khách, cách xử lý khi đông khách và việc phát sinh gấp.", "khach-moi": "Mẫu lời chào và câu hỏi hình thức lesson.", "dia-diem": "An Phú (mái che) và Thảo Điền (ngoài trời), kèm link Google Maps.", "private": "3 cấp coach, giá tại sân ACTN và tại sân của khách.", "hitting": "3 level, bảng giá Hitting Partner.", "group": "Lịch lớp Kid và người lớn, gửi link web để khách tự đặt.", "thue-san": "Điều kiện thuê, giá sân Outdoor và Indoor.", "dv-khac": "Thuê vợt, Ball boy: tư vấn trước khi chốt deal.", "check-lich": "Hỏi giờ khách muốn, check lịch, gợi ý giờ khác nếu kín.", "confirm": "Bắt buộc gửi tin confirm: ngày giờ, dịch vụ, địa điểm.", "booking": "Tạo booking trên tab Lịch, rồi chọn hình thức thanh toán.", "gui-bill": "A. Chuyển khoản qua app Booking · B. Thẻ / PayPal qua Wix.", "tick-task": "Làm xong việc đã hứa thì bấm ✓ Xong, không bấm sẽ bị trừ điểm.", "ket-ca": "Giao ca trước 5–10 phút, chọn lý do cho việc chưa xong.", "mt-1": "Lời chào, hỏi hình thức lesson, nhắn khách chờ.", "mt-2": "Địa điểm, giá private, group, app, thuê sân, dịch vụ đi kèm.", "mt-3": "Hỏi giờ, gợi ý giờ khác, confirm 1 ngày / nhiều ngày.", "mt-4": "Hoá đơn chuyển khoản, hạn thanh toán, link thẻ / PayPal."};
+$$(".sub").forEach(sb=>{if(sb.id==="luong"||sb.classList.contains("svc"))return;const h=sb.querySelector(":scope>h2.subh");if(!h)return;
+ const body=document.createElement("div");body.className="acc-b";while(h.nextSibling)body.appendChild(h.nextSibling);
+ const sm=document.createElement("p");sm.className="acc-s";sm.textContent=SUM[sb.id]||"";sb.append(sm,body);sb.classList.add("acc");
+ h.setAttribute("role","button");h.tabIndex=0;h.onclick=()=>sb.classList.toggle("open");h.onkeydown=e=>{if(e.key==="Enter")h.click()}});
+function openTo(el){for(let x=el;x;x=x.parentElement)if(x.classList&&x.classList.contains("acc"))x.classList.add("open")}
+document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const t=document.getElementById(a.hash.slice(1));if(!t)return;e.preventDefault();openTo(t);t.scrollIntoView({behavior:"smooth"});history.replaceState(null,"",a.hash)});
+if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t){openTo(t);setTimeout(()=>t.scrollIntoView(),50)}}
 /* MENU CON: sửa danh sách tab con ở đây (id phần → tên hiện) */
 const SUB={
-"nhan-ca":[["nhan-ca","Các bước nhận ca"],["check-tn","Check tin nhắn"]],
-"lam-viec":[["luong","Luồng tư vấn"],["khach-moi","Khách mới"],["dich-vu","Tư vấn dịch vụ"],["check-lich","Check lịch"],["confirm","Confirm booking"],["booking","Book lesson"],["gui-bill","Gửi bill"],["tick-task","Hoàn thành task"],["ket-ca","Kết ca"]],
+"nhan-ca":[["nc-steps","Các bước nhận ca"],["check-tn","Check tin nhắn"]],
+"lam-viec":[["luong","Luồng tư vấn"],["dich-vu","Tư vấn dịch vụ"],["check-lich","Check lịch"],["confirm","Confirm booking"],["booking","Đặt lịch"],["gui-bill","Gửi hoá đơn"]],
+"ca-end":[["ket-ca","Các bước giao ca"]],
+"mau-tin":[["mt-1","Mở đầu"],["mt-2","Dịch vụ"],["mt-3","Lịch & confirm"],["mt-4","Hoá đơn"]],
 "dich-vu":[["dia-diem","Địa điểm"],["private","Private"],["hitting","Hitting Partner"],["group","Group"],["thue-san","Thuê sân"],["dv-khac","DV đi kèm"]]};
-const MARK=[["nhan-ca","nhan-ca"],["lam-viec","lam-viec"],["dich-vu","dich-vu"],["check-lich","lam-viec"]];
+const MARK=[["nhan-ca","nhan-ca"],["lam-viec","lam-viec"],["dich-vu","dich-vu"],["check-lich","lam-viec"],["ca-end","ca-end"],["mau-tin","mau-tin"]];
 const top1=$$("#nav .row1 a"), sub=$("#subnav"); let cur="";
 function off(){return $("#nav").getBoundingClientRect().bottom+12}
 function showSub(k){if(k===cur)return;cur=k;top1.forEach(a=>a.classList.toggle("on",a.hash==="#"+k));
  sub.innerHTML=(SUB[k]||[]).map(([id,t])=>'<a href="#'+id+'">'+t+'</a>').join("")}
-function upd(){const o=off();let k="nhan-ca";
+function upd(){if(Date.now()<lock)return;const o=off();let k="nhan-ca";
  for(const [id,key] of MARK){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=o+40)k=key}
+ if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)k="mau-tin";
  showSub(k);let a="";for(const [id] of (SUB[k]||[])){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=o+40)a=id}
- if(k==="lam-viec"&&innerHeight+scrollY>=document.documentElement.scrollHeight-4)a="ket-ca";
  $$("a",sub).forEach(x=>{const on=x.hash==="#"+a;x.classList.toggle("on",on);if(on&&x.scrollIntoView&&sub.scrollWidth>sub.clientWidth){sub.scrollLeft=x.offsetLeft-20}})}
-top1.forEach(a=>a.addEventListener("click",()=>showSub(a.hash.slice(1))));
+let lock=0;top1.forEach(a=>a.addEventListener("click",()=>{lock=Date.now()+1500;showSub(a.hash.slice(1))}));
 addEventListener("scroll",upd,{passive:true});upd();
 </script>
 </body>
