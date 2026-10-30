@@ -108,8 +108,9 @@ nav .row1 a{padding:6px 10px;font-size:13.5px}
 <h2>1. Nhận ca</h2>
 <div class="sub" id="nc-steps">
 <h2 class="subh">Các bước nhận ca</h2>
+<div class="card">Link app Booking (dùng để setup app cho admin): <a href="https://actnbookingportal.netlify.app/app.html" target="_blank" rel="noopener">actnbookingportal.netlify.app/app.html</a></div>
 <div class="card"><ol>
-<li>Mở app Booking, tab <b>Home</b>, bấm <b>Nhận ca</b>. Quá 15 phút chưa nhận ca, hệ thống sẽ báo quản lý.</li>
+<li>Mở <a href="https://actnbookingportal.netlify.app/app.html" target="_blank" rel="noopener">app Booking</a>, tab <b>Home</b>, bấm <b>Nhận ca</b>. Quá 15 phút chưa nhận ca, hệ thống sẽ báo quản lý.</li>
 <li>Xem việc <b>bạn sẽ nhận</b> và việc <b>ca trước để lại</b> (app tự thống kê).</li>
 <li>Check lại các tin nhắn trên các nền tảng để không bỏ sót. <span class="must">Ưu tiên trả lời khách trước, không để khách chờ.</span></li>
 </ol></div>
@@ -383,7 +384,8 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 </div>
 <div class="sub" id="private">
 <h2 class="subh">Private Lesson</h2>
-<div class="card"><b>3 cấp coach:</b> Junior · Senior · Head<br><span style="color:var(--mute)">Head coach không dạy ở sân khác.</span></div>
+<div class="card"><b>3 cấp coach:</b> Junior · Senior · Head<br><span style="color:var(--mute)">Head coach không dạy ở sân khác.</span><br>Thông tin các coach: <a href="https://www.actntennisacademy.com/about" target="_blank" rel="noopener">actntennisacademy.com/about</a></div>
+<div class="tpl" data-t="coachinfo"></div>
 <h3>Private tại sân ACTN (đã gồm tiền sân và bóng)</h3>
 <figure class="img" data-img="p-1" data-cap="Bảng giá + thông tin 3 level coach (tại ACTN)"></figure>
 <h3>Private tại sân của khách (giá chưa gồm tiền sân)</h3>
@@ -452,6 +454,7 @@ Xử lý ngay các việc này, rồi quay lại trả lời tiếp khách đang
 <div class="sub" id="mt-2">
 <h2 class="subh">Thông tin dịch vụ</h2>
 <div class="tpl" data-t="locations"></div>
+<div class="tpl" data-t="coachinfo"></div>
 <div class="tpl" data-t="privrate"></div>
 <div class="tpl" data-t="group"></div>
 <div class="tpl" data-t="app"></div>
@@ -485,6 +488,9 @@ const IMGS = {"cc-1": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 
 /* TIN NHẮN MẪU: sửa chữ ở đây. */
 const T = {
+coachinfo:{title:"Gửi link thông tin các coach",
+en:"You can find more information about our coaches here:\nhttps://www.actntennisacademy.com/about",
+vi:"Anh/chị có thể xem thông tin các coach bên em tại đây ạ:\nhttps://www.actntennisacademy.com/about"},
 ccguide:{title:"Hướng dẫn thanh toán bằng thẻ (gửi kèm ảnh)",
 en:"You can follow these steps to make the payment via your credit card. Kindly complete the payment before [10:00 AM, date] so we can keep the spot for you.",
 vi:"Bạn có thể làm theo các bước trong ảnh để thanh toán bằng thẻ tín dụng. Bạn vui lòng thanh toán trước [10:00 AM, ngày] để bên mình giữ chỗ cho bạn nhé."},
@@ -528,8 +534,8 @@ privrate:{title:"Giá private tại sân của khách",
 en:"Certainly. Here are our rates for lessons at your own court:\n\nSemi-private 1:1 lesson\n1, With Junior Coach: 650.000vnd/h\n2, With Senior Coach: 860.000vnd/h\n\nSemi-private 1:2 lesson\n1, With Junior Coach: 860.000vnd/h\n2, With Senior Coach: 1.080.000vnd/h\n\nSemi-private 1:3 lesson\n1, With Junior Coach: 960.000vnd/h\n2, With Senior Coach: 1.296.000vnd/h\n\n(Court fee is not included.)\nWould you like me to help you book a session?",
 vi:"Mình xin gửi bạn bảng giá lesson tại sân của bạn:\n\nLesson 1:1\n1, Junior Coach: 650.000đ/h\n2, Senior Coach: 860.000đ/h\n\nLesson 1:2\n1, Junior Coach: 860.000đ/h\n2, Senior Coach: 1.080.000đ/h\n\nLesson 1:3\n1, Junior Coach: 960.000đ/h\n2, Senior Coach: 1.296.000đ/h\n\n(Chưa bao gồm tiền sân.)\nBạn có muốn mình hỗ trợ đặt lịch học luôn không ạ?"},
 group:{title:"Gửi link book Group",
-en:"You are welcome to check the schedule and book our group classes directly on our website: [LINK WEBSITE]\nPlease do not hesitate to let us know if you need any assistance.",
-vi:"Bạn có thể xem lịch và chủ động đặt lớp group trực tiếp trên website của bên mình tại đây: [LINK WEBSITE]\nNếu cần hỗ trợ thêm, bạn cứ nhắn mình bất cứ lúc nào ạ."},
+en:"You are welcome to check the schedule and book our group classes directly on our website: https://www.actntennisacademy.com\nPlease do not hesitate to let us know if you need any assistance.",
+vi:"Bạn có thể xem lịch và chủ động đặt lớp group trực tiếp trên website của bên mình tại đây: https://www.actntennisacademy.com\nNếu cần hỗ trợ thêm, bạn cứ nhắn mình bất cứ lúc nào ạ."},
 app:{title:"Mời tải app Community (khách đã book web 1 lần)",
 en:"For faster and more convenient booking of group classes and court rental, we warmly invite you to download our Community app: [LINK APP]",
 vi:"Để đặt lớp group và thuê sân nhanh chóng, thuận tiện hơn, mình xin gửi bạn link tải app Community của ACTN: [LINK APP]"},
